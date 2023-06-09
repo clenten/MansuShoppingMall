@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MansuShoppingMall</title>
+  <style>
+    #values {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+
+    #values p {
+      margin-right: 20px;
+    }
+
+    #button-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 100px);
+      grid-template-rows: repeat(5, 50px);
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    #image-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .box {
+      width: 300px;
+      height: 200px;
+      border: 1px solid black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .box img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    body {
+    height: 150vh;
+    }
+  </style>
+  <script>
+    const values = {
+      a: 0,
+      b: 0,
+      c: 0,
+      d: 0,
+      e: 0,
+    };
+    
+    let t = 0;
+    
+    function increaseValue(variable, number) {
+      values[variable]++;
+      document.getElementById(`${variable}-value`).textContent = values[variable];
+      displayImage(variable, values[variable], number);
+      t++;
+      document.getElementById("t-value").textContent = t;
+    }
+
+    function displayImage(variable, value, number) {
+      const imageContainer = document.getElementById("image-container");
+
+      // 이미지 박스 생성
+      const imageBox = document.createElement("div");
+      imageBox.className = "box";
+
+      // 이미지 엘리먼트 생성
+      const image = document.createElement("img");
+      image.src = `images/${variable}_${number}.jpg`; // 이미지 파일 경로 및 이름
+
+      // 이미지 엘리먼트를 박스에 추가
+      imageBox.appendChild(image);
+
+      //이전에 생성된 박스가 있다면 제거
+      const previousImageBox = imageContainer.querySelector(".box");
+      if (previousImageBox) {
+        imageContainer.removeChild(previousImageBox);
+      }
+
+      // 새로운 박스를 이미지 컨테이너에 추가
+      imageContainer.appendChild(imageBox);
+      
+      // 이전에 생성된 이미지들 제거
+      const previousImages = imageContainer.querySelectorAll(".box");
+      previousImages.forEach((box) => {
+        if (box !== imageBox) {
+          imageContainer.removeChild(box);
+        }
+      });
+    }
+    
+  </script>
+</head>
+<body>
+
+<div id="button-grid">
+  <!-- 버튼들을 생성하고 ID를 각 변수와 번호를 조합하여 지정 -->
+  <button id="a1" onclick="increaseValue('a', 1)">a1</button>
+  <button id="b1" onclick="increaseValue('b', 1)">b1</button>
+  <button id="c1" onclick="increaseValue('c', 1)">c1</button>
+  <button id="d1" onclick="increaseValue('d', 1)">d1</button>
+  <button id="e1" onclick="increaseValue('e', 1)">e1</button>
+  <button id="a2" onclick="increaseValue('a', 2)">a2</button>
+  <button id="b2" onclick="increaseValue('b', 2)">b2</button>
+  <button id="c2" onclick="increaseValue('c', 2)">c2</button>
+  <button id="d2" onclick="increaseValue('d', 2)">d2</button>
+  <button id="e2" onclick="increaseValue('e', 2)">e2</button>
+  <button id="a3" onclick="increaseValue('a', 3)">a3</button>
+  <button id="b3" onclick="increaseValue('b', 3)">b3</button>
+  <button id="c3" onclick="increaseValue('c', 3)">c3</button>
+  <button id="d3" onclick="increaseValue('d', 3)">d3</button>
+  <button id="e3" onclick="increaseValue('e', 3)">e3</button>
+  <button id="a4" onclick="increaseValue('a', 4)">a4</button>
+  <button id="b4" onclick="increaseValue('b', 4)">b4</button>
+  <button id="c4" onclick="increaseValue('c', 4)">c4</button>
+  <button id="d4" onclick="increaseValue('d', 4)">d4</button>
+  <button id="e4" onclick="increaseValue('e', 4)">e4</button>
+  <button id="a5" onclick="increaseValue('a', 5)">a5</button>
+  <button id="b5" onclick="increaseValue('b', 5)">b5</button>
+  <button id="c5" onclick="increaseValue('c', 5)">c5</button>
+  <button id="d5" onclick="increaseValue('d', 5)">d5</button>
+  <button id="e5" onclick="increaseValue('e', 5)">e5</button>
+</div>
+<!-- 변수들의 값을 출력할 영역 -->
+<div id="values">
+  <p>a: <span id="a-value">0</span></p>
+  <p>b: <span id="b-value">0</span></p>
+  <p>c: <span id="c-value">0</span></p>
+  <p>d: <span id="d-value">0</span></p>
+  <p>e: <span id="e-value">0</span></p>
+  <p>t: <span id="t-value">0</span></p>
+</div>
+<!-- 이미지를 표시할 영역 -->
+<div id="image-container"></div>
+<div id="additional-box"></div>
+<script>
+  function displayAdditionalBox() {
+    const additionalBox = document.getElementById("additional-box");
+    additionalBox.innerHTML = '';
+
+    const probability = (values['a'+5] ) / (5*t+125 );
+    const random = Math.random();
+//a+5/t+25  a3 a+5/5t+125
+    if (random < probability) {
+      const box = document.createElement("div");
+      box.className = "box";
+
+      const image = document.createElement("img");
+      const randomNumber = Math.floor(Math.random() * 5) + 1;
+      image.src = `images/a_${randomNumber}.jpg`;
+
+      box.appendChild(image);
+      additionalBox.appendChild(box);
+    }
+  }
+
+  setInterval(displayAdditionalBox, 1000); // 1초마다 추가 박스 표시
+</script>
+</body>
+</html>
