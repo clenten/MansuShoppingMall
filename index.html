@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <div class="div" style="overflow-y: scroll; ">
+        <div class="div" >
         <title>쇼핑몰 입구</title> <!--제목 설정-->
         <style>
         #test_btn1{ /* test_btn1이라고 지정한 버튼의 스타일 설정란 */
             border-color: 1px black;      /* 테두리 색 설정 */
             background-color: white;      /* 배경 색 설정 */
             color: black;                 /* 글자 색 설정 */
-            padding: 13px 35px;             /* 여백 설정 13px는 위아래 35px는 양옆 */
+            padding: 13px 27px;             /* 여백 설정 13px는 위아래 35px는 양옆 */
             border-radius: 4px;             /* 모서리 둥글게, 무조건 스타일은 위치설정 아래의 margin보다 먼저 설정해야함. */
             margin-top: 23%;                /* 상하 위치 설정 */
-            margin-left: 43%                /* 좌우 위치 설정 */
+            margin-left: 41%                /* 좌우 위치 설정 */
             
         }
         #test_btn1:hover{ /* hover는 마우스 포인터와 상호작용 시 라는 뜻 */
@@ -20,7 +20,7 @@
         } 
         /* #btn_group button{} 으로도 가능 */
         body{
-            background-image: url(batang3.png);
+            background-image: url(door4.png);
 			background-repeat: no-repeat; /* 이미지 반복 방지 */
 			background-size: cover; /* 화면 전체를 이미지로 채우기 */
         }
@@ -31,7 +31,7 @@
         <div id="btn_group"> <!--btn_group 이라는 버튼들만 모아둔 영역 설정-->
             <button id="test_btn1" onclick="location.href='MansuShoppingMall.html'"> <!--버튼 생성하고 test_btn1 이라는 id 이름 설정 후 클릭시 ShoppingMall.html 파일 열기-->
                 <div class="test_btn1_text"> <!--test_btn1_text 라는 클래스 설정-->
-                    <h1>쇼핑몰 가기</h1> <!--쇼핑몰 가기 넣기, 버튼 규격에 맞게 글자 사이즈도 변경됨.-->
+                    <h1>누적추천알고리즘</h1> <!--내용 넣기, 버튼 규격에 맞게 글자 사이즈도 변경됨.-->
                 </div>
             </button>
         </div>
